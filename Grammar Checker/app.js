@@ -8,23 +8,23 @@ let badWord = 'freaking';
 console.log(storyWords.join(' '));
 
 let count = 0;
-
-storyWords.forEach((count) => {
+storyWords.forEach((word) => {
   console.log(count);
-})
+});
+console.log(`Word Count: the ${count}`);
 
 storyWords = storyWords.filter((word) => word !== unnecessaryWord);
 
 storyWords = storyWords.map((word) => word === misspelledWord ? 'beautiful' : word);
 
-console.log(storyWords.join(' '));
-
 const badWordIndex = storyWords.findIndex(word => word === badWord);
+if (badWordIndex !== -1) {
+  storyWords[badWordIndex] = 'really';
+}
 
-storyWords[badWordIndex] = 'really';
+const lengthCheck = storyWords.every((word) => word.length <= 10);
+console.log(`All words 10 characters or less: ${lengthCheck}`);
 
-const lengthCheck = storyWords.every((word) => word < 10);
+storyWords = storyWords.map((word) => word.length > 10 ? 'stunning' : word);
 
-console.log(lengthCheck);
-
-storyWords[story] = 'stunning'; 
+console.log(storyWords.join(' '));
